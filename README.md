@@ -1,5 +1,5 @@
 # Work Day Scheduler
-Ever find yourself without a pen and paper to write down your schedule for the day?  No problem!  Pull this little guy up on your phone or computer and quickly plan you day!  It even highlights the hours that are no longer available, the current hour and all available future hours with different colors.
+Ever find yourself without a pen and paper to write down your schedule for the day?  No problem!  Pull this little guy up on your phone or computer and quickly plan your day!  It even highlights the hours that are no longer available, the current hour and all available future hours with different colors.
 
 A link to the quiz can be found [here](https://jondagamkd.github.io/scheduler/).
 
