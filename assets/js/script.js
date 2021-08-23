@@ -1,4 +1,4 @@
-
+// Main function to load items from localStorage if any
 var loadmyDay = function() {
     $('#currentDay').text(moment().format('dddd, MMMM Do'))
     myDay = JSON.parse(localStorage.getItem("myDay"));
@@ -22,10 +22,12 @@ var loadmyDay = function() {
 };
 loadmyDay()
 
+// save to localStorage
 var savemyDay = function() {
     localStorage.setItem("myDay", JSON.stringify(myDay));
   };
 
+// Display items in myDay object and arrange into bootstrap rows.
 var displayDay = function() {
     document.getElementById("mainList").innerHTML = ""
     for (const key in myDay) {
@@ -62,6 +64,7 @@ var displayDay = function() {
 }
 displayDay()
 
+// When main input block is clicked, edit but do not save till save button is clicked.
 $(".timeRow").on("click", "p", function() {
     $(this).closest(".timeRow").children(".saveBtn").children("span").addClass("oi-lock-unlocked").removeClass("oi-lock-locked")
     var text = $(this)
@@ -73,35 +76,9 @@ $(".timeRow").on("click", "p", function() {
       console.log(text);
     $(this).replaceWith(textInput);
     textInput.trigger("focus");
-
-    
-    //"<span class='oi oi-lock-unlocked'></span>"
   });
 
-// $(".timeRow").on("blur", "textarea", function() {
-// // get the textarea's current value/text
-// var text = $(this)
-//     .val()
-//     .trim();
-//     console.log('text area = ' + text)
-
-// var rowKey = $(this)
-//     .closest(".timeRow")
-//     .children(".hour")
-//     .text();
-//     console.log('rowKey area = ' + rowKey)
-
-// myDay[rowKey] = text
-// savemyDay()
-
-// // recreate p element
-// var taskP = $("<p>")
-// .text(text);
-
-// // replace textarea with p element
-// $(this).replaceWith(taskP);
-// });
-
+// Save what has been typed into the textarea, input block
 $(".timeRow").on("click", ".saveBtn", function() {
     $(this).closest(".timeRow").children(".saveBtn").children("span").addClass("oi-lock-locked").removeClass("oi-lock-unlocked")
 
@@ -134,27 +111,6 @@ $(".timeRow").on("click", ".saveBtn", function() {
     $(apptBlock).replaceWith(taskP);
 
   });
-
-// $(".timeRow").on("blur", "textarea", function() {
-// // get the textarea's current value/text
-// var rowKey = $(this)
-//     .closest(".timeRow")
-//     .children(".hour")
-//     .text();
-//     console.log('rowKey area = ' + rowKey)
-
-// var text = myDay[rowKey] 
-
-// // recreate p element
-// var taskP = $("<p>")
-// .text(text);
-
-// // replace textarea with p element
-// $(this).replaceWith(taskP);
-// });
-  
-
-
 
 savemyDay()
 setInterval(function(){ location.reload();  }, 600000);
